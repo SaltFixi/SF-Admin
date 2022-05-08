@@ -1,0 +1,97 @@
+
+.wrap {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	background-image: linear-gradient(
+    to left top,
+    #d16ba5,
+    #c777b9,
+    #ba83ca,
+    #aa8fd8,
+    #9a9ae1,
+    #8aa7ec,
+    #79b3f4,
+    #69bff8,
+    #52cffe,
+    #41dfff,
+    #46eefa,
+    #5ffbf1
+  );
+}
+
+.form {
+  height: 500px;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+}
+
+/* .login-title {
+  margin-top: 50px;
+} */
+
+.right {
+  width: 550px;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-input {
+  font-size: 18px;
+  height: 38px;
+  padding-left: 5px;
+}
+
+.ant-form-item-control {
+  line-height: 0;
+}
+
+.right-con {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 30px;
+  color: #70b4e3;
+  font-weight: 400;
+  padding-bottom: 10px;
+	text-align: center;
+}
+
+.ant-form-item label {
+  font-size: 17px;
+  font-weight: 400;
+  color: #70b4e3;
+}
+
+.text {
+  width: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #70b4e3;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.btn {
+  width: 100%;
+  height: 45px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  background-image: linear-gradient(120deg, #76daec 0%, #c5a8de 100%);
+}
+
+.btn:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(120deg, #76daec 0%, #c5a8de 100%);
+} 
