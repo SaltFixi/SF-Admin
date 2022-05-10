@@ -32,10 +32,10 @@ export default {
 
   computed: {
     noChidrenMenus() {
-      return this.menuRoutes.filter(r => !r.children)
+      return this.menuRoutes().filter(r => !r.children)
     },
     hasChidrenMenus() {
-      return this.menuRoutes.filter(r => r.children)
+      return this.menuRoutes().filter(r => r.children)
     },
     currentPath() {
       return this.$route.meta.key
@@ -44,19 +44,18 @@ export default {
       let str = ''
       str = '/' + this.$route.meta.key.split('/').splice(1, 1).join('')
       return [str]
-    },
+    }
+
+  },
+  methods: {
     menuRoutes() {
       // 找到路由数组
-      let menuRoutes = this.$router.options.routes
+      const routes = this.$router.options.routes
       // 找到 Layout 的子路由
-      menuRoutes = menuRoutes.find(r => r.name === 'Layout').children
-      // 过滤掉不需要在菜单栏显示的路由
-      menuRoutes = menuRoutes.filter(r => !r.meta.hide)
-      // 将路由排序
-      menuRoutes.sort((a, b) => {
-        return a.meta.sort - b.meta.sort
-      })
-      return menuRoutes
+      const menuRoutes = routes.find(r => r.name === 'Layout').children
+      this.$store.dispatch('account/generateRoutes', menuRoutes)
+      const menus = this.$store.state.account.menus
+      return menus
     }
   }
 

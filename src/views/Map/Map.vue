@@ -2,7 +2,7 @@
   <div>
     <baidu-map id="allmap" ak="YOUR_APP_KEY" :scroll-wheel-zoom="true" @ready="mapReady">
       <bm-info-window :position="point" :show="show" @close="infoWindowClose" @open="infoWindowOpen">
-        <div style="color:mediumpurple">我在这里哦!</div>
+        <div>我在这里哦!</div>
       </bm-info-window>
     </baidu-map>
   </div>
@@ -57,7 +57,7 @@ export default {
 
 <style lang="less" scoped>
 #allmap {
-  height: 650px;
+  height: 655px;
   width: 100%;
   margin: 0 auto;
 }

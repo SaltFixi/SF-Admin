@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 
 Vue.use(Antd)
 Vue.use(plugin, {
-  // silent: true // 开启静默模式
+  // silent: true // 开启静默模式，控制台所有打印均消失
 })
 
 new Vue({

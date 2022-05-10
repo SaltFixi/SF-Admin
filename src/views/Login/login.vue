@@ -42,7 +42,6 @@
 <script>
 import md5 from 'md5'
 import debounce from 'lodash/debounce'
-import { setToken } from '@/plugin/until/auth'
 
 export default {
   data() {
@@ -61,18 +60,24 @@ export default {
     handleLogin: debounce(async function () {
       await this.$valid('login_form')
 
-      // 将表单中的用户名和密码发送到后端去校验，后端将解密后的密码存一下
-      this.login_form_model.password = md5(
-        md5(this.login_form_model.password) + 'saltedfixi'
-      ).split('').reverse().join('')
+      try {
+        const loginModel = this.login_form_model
+        // 将表单中的用户名和密码发送到后端去校验，后端将解密后的密码存一下
+        loginModel.password = md5(
+          md5(loginModel.password) + 'saltedfixi'
+        ).split('').reverse().join('')
 
-      const { resultCode, data: { token } } = await this.$post('/sys-user/login', this.login_form_model)
-      if (resultCode) {
-        setToken(token)
-        this.$ms('success', '登录成功', '欢迎您！')
-        this.$router.push('/')
-      } else {
-        this.$ms('error', '登录失败', '请检查用户名或密码错误。')
+        const login = (loginModel) => this.$store.dispatch('account/login', loginModel)
+
+        const resultCode = await login(loginModel)
+        if (resultCode) {
+          this.$ms('success', '登录成功', '欢迎您！')
+          this.$router.push('/')
+        } else {
+          this.$ms('error', '登录失败', '请检查用户名或密码错误。')
+        }
+      } catch (error) {
+        this.$ms('error', '服务器异常')
       }
     }, 500)
   }

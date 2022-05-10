@@ -19,10 +19,9 @@ VueRouter.prototype.push = function push(location, onResolve, onReject) {
 // 路由跳转前一定会走这里
 router.beforeEach(async(to, from, next) => {
   if (to.meta.title) { document.title = 'SF-Admin | ' + to.meta.title }
-  Nprogress.start()
+  // Nprogress.start()
   const auth = getToken()
   if (auth) {
-    Nprogress.done()
     // 已登录的话，不能再去登录页
     if (to.path === '/login') {
       return next('/')

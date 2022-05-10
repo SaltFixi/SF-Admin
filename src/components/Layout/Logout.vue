@@ -18,21 +18,21 @@
 </template>
 
 <script>
-import Cookie from 'js-cookie'
-import { removeToken } from '@/plugin/until/auth'
 export default {
   computed: {
     nickName() {
-      return Cookie.get('nickName')
+      const { name } = this.$store.state.account.userInfo
+      return name
     }
   },
 
   methods: {
-    logout() {
-      removeToken()
-      this.$router.push('/login')
+    async logout() {
+      await this.$mc('你确定退出吗？', '')
+      this.$store.dispatch('account/logOut')
     }
   }
+
 }
 </script>
 

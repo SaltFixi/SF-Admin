@@ -8,24 +8,21 @@ context.keys().forEach((filePath) => {
   asyncRoutes.push(...context(filePath).default)
 })
 
-function isChildren(obj, children) {
-  if (Object.values(obj).includes(children)) {
-    obj.children.forEach((item) => {
-      item.meta.key = item.path
-      isChildren(obj.children, children)
-    })
-  } else {
-    return false
-  }
+// 处理路由的key，如果meta下没有key就将path赋给meta.key
+// key用来当当前路由的高亮显示
+function routesKey(route) {
+  return route.map((r) => {
+    if (!r.meta) r.meta = {}
+    if (r.meta && !r.meta.key) {
+      r.meta.key = r.path
+      if (r.children && r.children.length > 0) {
+        routesKey(r.children)
+      }
+    }
+    return r
+  })
 }
 
-asyncRoutes.forEach((r) => {
-  if (!r.meta) r.meta = {}
-  // 没有设置key的默认path为keyc
-  if (!r.meta.key) {
-    r.meta.key = r.path
-    isChildren(r, r.children)
-  }
-})
+routesKey(asyncRoutes)
 
 export default asyncRoutes

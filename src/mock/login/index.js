@@ -11,9 +11,11 @@ Mock.mock(/api\/sys-user\/login/, 'post', (_req) => {
   if (user === 'admin' && password === '9499453f9c2b064ad5094031d6ee46df') {
     success = true
     result.data.name = 'Saltedfixi'
+    result.data.role = 'admin'
   } else if (user === 'xx' && password === '30fcb6acfe4f39cbb1b743a989cd39a5') {
     success = true
     result.data.name = 'xx'
+    result.data.role = 'emp'
   }
   if (success) {
     result.status = 200

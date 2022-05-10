@@ -12,7 +12,7 @@ const dataState = createPersistedState({
   render(state) {
     return { ...state }
   }
-  // paths: ['openKeys']
+  // paths: ['']
 })
 
 const store = new Vuex.Store({

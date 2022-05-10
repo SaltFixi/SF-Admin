@@ -23,6 +23,7 @@ export default [
         component: () => import('@/views/Goods/GoodsAdd.vue'),
         meta: {
           // hide: true,
+          // key: '/goods/list',
           title: '商品添加',
           icon: 'shopping'
         }
