@@ -53,9 +53,10 @@ export default {
       const routes = this.$router.options.routes
       // 找到 Layout 的子路由
       const menuRoutes = routes.find(r => r.name === 'Layout').children
-      this.$store.dispatch('account/generateRoutes', menuRoutes)
-      const menus = this.$store.state.account.menus
-      return menus
+      // 这里有点bug暂未修改
+      // this.$store.dispatch('account/generateRoutes', menuRoutes)
+      // const menus = this.$store.state.account.menus
+      return menuRoutes
     }
   }
 
