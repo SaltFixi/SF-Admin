@@ -2,6 +2,8 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false,
+  publicPath: './',
+  outputDir: 'dist',
   configureWebpack: {
     // 分离chunk文件
     externals: {
