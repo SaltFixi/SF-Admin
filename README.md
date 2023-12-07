@@ -58,7 +58,7 @@ yarn dev
 
 [使用文档](./src/config/use.md)
 
-
+[访问网址](https://saltfixi.github.io/SF-Admin/index.html)
 ## 部分截图
 
 ![image-20220510190620129](https://raw.githubusercontent.com/Saltedfixi/blog/main/img202205101907638.png)
